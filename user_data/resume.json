@@ -1,0 +1,16 @@
+{
+    "first_name" : "Jake",
+    "last_name" : "Ryan",
+    "phone_number" : "123-456-7890",
+    "email" : "email@email.com",
+
+    "linked_in" : "linkedin.com/in/example",
+    "github" : "github.com/example",
+
+    "sections" : [
+        {
+            "title" : "Experience",
+            "component_type" : "job"
+        }
+    ]
+}
