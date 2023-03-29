@@ -1,5 +1,3 @@
-import 'package:flutter/rendering.dart';
-
 import 'checkable.dart';
 import 'bullet.dart';
 

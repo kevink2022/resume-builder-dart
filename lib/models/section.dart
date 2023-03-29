@@ -3,8 +3,6 @@ import 'project.dart';
 import 'component.dart';
 import 'checkable.dart';
 
-//abstract class Component {}
-
 enum SectionType { job, project }
 
 class Section with Checkable {
