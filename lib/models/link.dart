@@ -1,4 +1,6 @@
-class Link {
+import 'package:resume_builder/models/checkable.dart';
+
+class Link with Checkable {
   final String url;
   final String title;
   final String? imageFile;

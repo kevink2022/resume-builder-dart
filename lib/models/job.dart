@@ -1,6 +1,5 @@
-import 'package:resume_builder/models/section.dart';
+import 'package:resume_builder/models/bullet.dart';
 import 'component.dart';
-
 
 class Job extends Component {
   String employer;
@@ -14,7 +13,7 @@ class Job extends Component {
     required this.endDate,
     required this.location,
     required String title,
-    required List<String> bullets,
+    required List<Bullet> bullets,
   }) : super(title: title, bullets: bullets);
 
   factory Job.fromJson(Map<String, dynamic> json) {
@@ -24,7 +23,8 @@ class Job extends Component {
       startDate: json['start_date'],
       endDate: json['end_date'],
       location: json['location'],
-      bullets: List<String>.from(json['bullets'].map((x) => x)),
+      bullets:
+          List<Bullet>.from(json['bullets'].map((x) => Bullet.fromJson(x))),
     );
   }
 

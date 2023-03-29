@@ -25,7 +25,8 @@ class Resume {
       phoneNumber: json['phone_number'],
       email: json['email'],
       links: (json['links'] as List).map((e) => Link.fromJson(e)).toList(),
-      sections: (json['sections'] as List).map((e) => Section.fromJson(e)).toList(),
+      sections:
+          (json['sections'] as List).map((e) => Section.fromJson(e)).toList(),
     );
   }
 

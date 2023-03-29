@@ -1,0 +1,106 @@
+{
+  "first_name": "Jake",
+  "last_name": "Ryan",
+  "phone_number": "123-456-7890",
+  "email": "email@email.com",
+  "links": [
+    {
+      "url": "github.com/example",
+      "title": "Github",
+      "isChecked": true
+    },
+    {
+      "url": "linkedin.com/in/example",
+      "title": "LinkedIn",
+      "isChecked": true
+    }
+  ],
+  "sections": [
+    {
+      "title": "Experience",
+      "type": "job",
+      "isChecked": true,
+      "components": [
+        {
+          "isChecked": true,
+          "data": {
+            "title": "Undergraduate Research Assistant",
+            "employer": "Texas A&M University",
+            "start_date": "June 2020",
+            "end_date": "Present",
+            "location": "College Station, TX",
+            "bullets": [
+              {
+                "text": "Developed a REST API using FastAPI and PostgreSQL to store data from learning management systems",
+                "isChecked": true
+              },
+              {
+                "text": "Developed a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data",
+                "isChecked": true
+              },
+              {
+                "text": "Explored ways to visualize GitHub collaboration in a classroom setting",
+                "isChecked": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "type": "project",
+      "isChecked": true,
+      "components": [
+        {
+          "isChecked": true,
+          "data": {
+            "title": "Gitlytics",
+            "start_date": "June 2020",
+            "end_date": "Present",
+            "skills": [
+              {
+                "text": "Python",
+                "isChecked": true
+              },
+              {
+                "text": "Flask",
+                "isChecked": true
+              },
+              {
+                "text": "React",
+                "isChecked": true
+              },
+              {
+                "text": "PostgreSQL",
+                "isChecked": true
+              },
+              {
+                "text": "Docker",
+                "isChecked": true
+              }
+            ],
+            "bullets": [
+              {
+                "text": "Developed a full-stack web application using with Flask serving a REST API with React as the frontend",
+                "isChecked": true
+              },
+              {
+                "text": "Implemented GitHub OAuth to get data from user's repositories",
+                "isChecked": true
+              },
+              {
+                "text": "Visualized GitHub data to show collaboration",
+                "isChecked": true
+              },
+              {
+                "text": "Used Celery and Redis for asynchronous tasks",
+                "isChecked": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

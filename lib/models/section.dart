@@ -1,12 +1,13 @@
 import 'job.dart';
 import 'project.dart';
 import 'component.dart';
+import 'checkable.dart';
 
 //abstract class Component {}
 
 enum SectionType { job, project }
 
-class Section {
+class Section with Checkable {
   String title;
   SectionType type;
   List<Component> components;
@@ -31,7 +32,8 @@ class Section {
           .toList();
     }
 
-    return Section(title: json['title'], type: sectionType, components: components);
+    return Section(
+        title: json['title'], type: sectionType, components: components);
   }
 
   Map<String, dynamic> toJson() {

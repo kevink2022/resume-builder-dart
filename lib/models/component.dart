@@ -1,10 +1,15 @@
-abstract class Component {
+import 'package:flutter/rendering.dart';
+
+import 'checkable.dart';
+import 'bullet.dart';
+
+abstract class Component with Checkable {
   final String title;
-  final List<String> bullets;
+  final List<Bullet> bullets;
 
   Component({
     required this.title,
-    this.bullets = const [],
+    required this.bullets,
   });
 
   factory Component.fromJson(Map<String, dynamic> json) {
