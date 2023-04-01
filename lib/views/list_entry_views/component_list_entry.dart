@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder/models/export.dart';
+import 'package:resume_builder/views/list_entry_views/job_list_entry.dart';
+import 'package:resume_builder/views/list_entry_views/project_list_entry.dart';
 
 class ComponentListEntry extends StatefulWidget {
   final Component component;
@@ -15,7 +17,7 @@ class _ComponentListEntryState extends State<ComponentListEntry> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      title: Text(widget.component.title),
+      title: componentListEntryForType(widget.component),
       value: widget.component.isChecked,
       onChanged: (bool? value) {
         setState(() {
@@ -26,5 +28,15 @@ class _ComponentListEntryState extends State<ComponentListEntry> {
         }
       },
     );
+  }
+}
+
+Widget componentListEntryForType(Component component) {
+  if (component is Job) {
+    return JobListEntry(job: component);
+  } else if (component is Project) {
+    return ProjectListEntry(project: component);
+  } else {
+    throw Exception("Unknown component type");
   }
 }

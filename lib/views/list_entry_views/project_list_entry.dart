@@ -8,15 +8,20 @@ class ProjectListEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          project.title,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Text('${project.startDate} - ${project.endDate}'),
-      ],
+    return ListTile(
+      title: Text(
+        project.title,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '${project.startDate} - ${project.endDate}',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ],
+      ),
     );
   }
 }

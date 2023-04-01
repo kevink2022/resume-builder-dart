@@ -4,19 +4,25 @@ import 'package:resume_builder/models/job.dart';
 class JobListEntry extends StatelessWidget {
   final Job job;
 
-  JobListEntry({required this.job});
+  const JobListEntry({Key? key, required this.job}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '${job.title} | ${job.employer}',
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Text('${job.startDate} - ${job.endDate}'),
-      ],
+    return ListTile(
+      title: Text(
+        job.title,
+        style: TextStyle(fontWeight: FontWeight.bold),
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(job.employer),
+          Text(
+            '${job.startDate} - ${job.endDate}',
+            style: TextStyle(fontStyle: FontStyle.italic),
+          ),
+        ],
+      ),
     );
   }
 }

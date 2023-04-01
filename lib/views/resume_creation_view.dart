@@ -37,21 +37,26 @@ class _ResumeCreationViewState extends State<ResumeCreationView> {
                   .map((component) {
                 return Column(
                   children: [
-                    ComponentListEntry(
-                      component: component,
-                      onComponentToggle: (_) {
-                        setState(() {});
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: ComponentListEntry(
+                        component: component,
+                        onComponentToggle: (_) {
+                          setState(() {});
+                        },
+                      ),
                     ),
                     ...component.bullets
                         .where((bullet) => component.isChecked)
                         .map((bullet) {
-                      return BulletListEntry(
-                        bullet: bullet,
-                        onBulletToggle: (_) {
-                          setState(() {});
-                        },
-                      );
+                      return Padding(
+                          padding: const EdgeInsets.only(left: 32.0),
+                          child: BulletListEntry(
+                            bullet: bullet,
+                            onBulletToggle: (_) {
+                              setState(() {});
+                            },
+                          ));
                     }).toList(),
                   ],
                 );
