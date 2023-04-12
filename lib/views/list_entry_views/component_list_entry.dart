@@ -16,17 +16,9 @@ class ComponentListEntry extends StatefulWidget {
 class _ComponentListEntryState extends State<ComponentListEntry> {
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      title: componentListEntryForType(widget.component),
-      value: widget.component.isChecked,
-      onChanged: (bool? value) {
-        setState(() {
-          widget.component.isChecked = value!;
-        });
-        if (widget.onComponentToggle != null) {
-          widget.onComponentToggle!(value);
-        }
-      },
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0),
+      child: componentListEntryForType(widget.component),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_builder/models/section.dart';
+import 'package:resume_builder/views/list_entry_views/component_list_entry.dart';
 
 class SectionListEntry extends StatefulWidget {
   final Section section;
@@ -14,38 +15,33 @@ class SectionListEntry extends StatefulWidget {
 class _SectionListEntryState extends State<SectionListEntry> {
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      title: Text(
-        widget.section.title,
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
-      value: widget.section.isChecked,
-      onChanged: (bool? value) {
-        setState(() {
-          widget.section.isChecked = value!;
-        });
-        if (widget.onSectionToggle != null) {
-          widget.onSectionToggle!(value);
-        }
-      },
+    return Column(
+      children: [
+        CheckboxListTile(
+          title: Text(
+            widget.section.title,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          ),
+          value: widget.section.isChecked,
+          onChanged: (bool? value) {
+            setState(() {
+              widget.section.isChecked = value!;
+            });
+            if (widget.onSectionToggle != null) {
+              widget.onSectionToggle!(value);
+            }
+          },
+        ),
+        if (widget.section.isChecked)
+          ...widget.section.components.map((component) {
+            return ComponentListEntry(
+              component: component,
+              onComponentToggle: (_) {
+                setState(() {});
+              },
+            );
+          }).toList(),
+      ],
     );
   }
 }
-
-
-// import 'package:flutter/material.dart';
-// import 'package:resume_builder/models/section.dart';
-
-// class SectionListEntry extends StatelessWidget {
-//   final Section section;
-
-//   SectionListEntry({required this.section});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       section.title,
-//       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
-//     );
-//   }
-// }

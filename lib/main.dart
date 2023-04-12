@@ -23,3 +23,17 @@ class ResumeBuilderApp extends StatelessWidget {
     );
   }
 }
+
+/* 
+
+JSON wont load from file
+
+Expand List entries
+
+Add list editing
+
+Add order editing
+
+Create tex files
+
+*/ 
