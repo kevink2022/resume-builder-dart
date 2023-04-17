@@ -16,7 +16,10 @@ class BulletListEntry extends StatelessWidget {
       ),
       value: bullet.isChecked,
       onChanged: (bool? newValue) {
+        print('Bullet isChecked before: ${bullet.isChecked}');
         bullet.isChecked = newValue ?? false;
+        print('Bullet isChecked after: ${bullet.isChecked}');
+
         if (onBulletToggle != null) {
           onBulletToggle!(newValue);
         }

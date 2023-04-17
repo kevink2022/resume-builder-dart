@@ -34,4 +34,23 @@ class Project extends Component {
       'bullets': bullets,
     };
   }
+
+  @override
+  String toLaTeX() {
+    // Filter the bullets based on whether isChecked is true
+    List<Bullet> checkedBullets =
+        bullets.where((bullet) => bullet.isChecked).toList();
+
+    // Generate the LaTeX code for each checked bullet using Bullet's toLaTeX method
+    String bulletLaTeX =
+        checkedBullets.map((bullet) => bullet.toLaTeX()).join('\n');
+
+    return '''
+\\resumeProject
+  {\\textbf{$title} \$|\$ $title}
+  \\resumeBulletListStart
+    $bulletLaTeX
+  \\resumeBulletListEnd
+''';
+  }
 }

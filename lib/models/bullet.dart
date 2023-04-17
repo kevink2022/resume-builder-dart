@@ -12,4 +12,8 @@ class Bullet with Checkable {
   Map<String, dynamic> toJson() => {
         'content': content,
       };
+
+  String toLaTeX() {
+    return '\\resumeBullet{$content}';
+  }
 }

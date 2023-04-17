@@ -86,4 +86,18 @@ class Section with Checkable {
         throw Exception('Unknown section type: $sectionType');
     }
   }
+
+  String toLaTeX() {
+    List<Component> checkedComponents =
+        components.where((component) => component.isChecked).toList();
+    String componentsLaTeX =
+        checkedComponents.map((component) => component.toLaTeX()).join('\n');
+
+    return '''
+\\resumeSection{$title}
+\\resumeComponentListStart
+  $componentsLaTeX
+\\resumeComponentListEnd
+''';
+  }
 }

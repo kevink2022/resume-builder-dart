@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:resume_builder/viewmodels/manager.dart';
 import 'package:resume_builder/models/export.dart';
 import 'package:resume_builder/views/list_entry_views/export.dart';
@@ -17,70 +18,57 @@ class ResumeCreationView extends StatefulWidget {
 class _ResumeCreationViewState extends State<ResumeCreationView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Resume Creation'),
-      ),
-      body: ListView(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(ViewConstants.standardIndent),
-            child: Text(
-              'Links',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
+    // final manager = Provider.of<Manager>(context, listen: false);
+    final manager = widget.manager;
+
+    return Stack(
+      children: [
+        Scaffold(
+          appBar: AppBar(
+            title: const Text('Resume Creation'),
           ),
-          ...widget.manager.resume.links.map((link) {
-            return Padding(
-              padding:
-                  const EdgeInsets.only(left: ViewConstants.standardIndent),
-              child: LinkListEntry(
-                link: link,
-                onLinkToggle: (_) {
-                  setState(() {});
-                },
+          body: ListView(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(ViewConstants.standardIndent),
+                child: Text(
+                  'Links',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ),
-            );
-          }).toList(),
-          ...widget.manager.resume.sections.map((section) {
-            return SectionListEntry(
-              section: section,
-              onSectionToggle: (_) {
-                setState(() {});
-              },
-            );
-          }).toList(),
-        ],
-      ),
+              ...widget.manager.resume.links.map((link) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.only(left: ViewConstants.standardIndent),
+                  child: LinkListEntry(
+                    link: link,
+                    onLinkToggle: (_) {
+                      setState(() {});
+                    },
+                  ),
+                );
+              }).toList(),
+              ...widget.manager.resume.sections.map((section) {
+                return SectionListEntry(
+                  section: section,
+                  onSectionToggle: (_) {
+                    setState(() {});
+                  },
+                );
+              }).toList(),
+            ],
+          ),
+        ),
+        Positioned(
+          bottom: 16,
+          right: 16,
+          child: FloatingActionButton(
+            onPressed: () => manager.generateTeX(),
+            child: Icon(Icons.save_alt),
+            tooltip: 'Generate TeX',
+          ),
+        ),
+      ],
     );
   }
 }
-
-
-// class _ResumeCreationViewState extends State<ResumeCreationView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Resume Builder'),
-//       ),
-//       body: ListView.builder(
-//         itemCount: widget.manager.resume.sections.length,
-//         itemBuilder: (context, sectionIndex) {
-//           Section section = widget.manager.resume.sections[sectionIndex];
-
-//           return Column(
-//             children: [
-//               SectionListEntry(
-//                 section: section,
-//                 onSectionToggle: (_) {
-//                   setState(() {});
-//                 },
-//               ),
-//             ],
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }

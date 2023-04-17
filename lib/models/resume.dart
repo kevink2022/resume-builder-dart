@@ -18,6 +18,8 @@ class Resume {
     required this.sections,
   });
 
+  String get fullName => '$firstName $lastName';
+
   factory Resume.fromJson(Map<String, dynamic> json) {
     return Resume(
       firstName: json['first_name'],
@@ -39,5 +41,34 @@ class Resume {
       'links': links.map((link) => link.toJson()).toList(),
       'sections': sections.map((section) => section.toJson()).toList(),
     };
+  }
+
+  String _generateLinksForLaTeX() {
+    List<String> linksLaTeX = [];
+    for (Link link in links) {
+      linksLaTeX.add("\\resumeLink{${link.url}}{${link.title}}");
+    }
+    return linksLaTeX.join(' ');
+  }
+
+  String toLaTeX() {
+    String header = '\\resumeHeader{$fullName}{$phoneNumber}{$email}';
+    String links = '';
+    String headerEnd = '\\resumeHeaderEnd';
+
+    for (Link link in this.links) {
+      if (link.isChecked) {
+        links += '\\resumeLink{${link.url}}{${link.title}}';
+      }
+    }
+
+    String sections = '';
+    for (Section section in this.sections) {
+      if (section.isChecked) {
+        sections += section.toLaTeX();
+      }
+    }
+
+    return header + links + headerEnd + sections;
   }
 }

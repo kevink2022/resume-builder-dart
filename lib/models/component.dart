@@ -13,4 +13,6 @@ abstract class Component with Checkable {
   factory Component.fromJson(Map<String, dynamic> json) {
     throw UnimplementedError('fromJson() is not implemented for base class');
   }
+
+  String toLaTeX();
 }
